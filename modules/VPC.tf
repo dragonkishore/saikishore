@@ -2,10 +2,10 @@
 
 resource "aws_vpc" "terraform" {
   cidr_block       = "${var.vpc_cidr}"
-  tenancy          = "default"
+  instance_tenancy = "default"
   enable_dns_hostnames = true
 
-  tags {
+  tags = {
     Name = "terraform"
   }
 }
@@ -18,7 +18,7 @@ resource "aws_subnet" "terraform" {
   vpc_id     = "${var.vpc_id}"
   cidr_block = "${element(var.subnet_cidr,count.index)}"
 
-  tags {
+  tags = {
     Name = "terraform-sub-${count.index+1}"
   }
 }
