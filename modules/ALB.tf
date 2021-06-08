@@ -7,7 +7,7 @@ resource "aws_lb" "terraform" {
   ip_address_type    = "ipv4"
   security_groups    = "${var.security_groups}"
   subnet_mapping {
-    subnet_id        = "${var.subnet_id[count.index]}"
+    subnet_id        = "${aws_subnet.terraform.*.id}"
   }
 }
 
