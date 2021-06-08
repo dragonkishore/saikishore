@@ -5,10 +5,8 @@ resource "aws_lb" "terraform" {
   internal           = false
   load_balancer_type = "application"
   ip_address_type    = "ipv4"
-  security_groups    = "${var.security_groups}"
-  subnet_mapping {
-    subnet_id        = "${var.subnet_ids[count.index]}"
-  }
+  security_groups    = "${aws_security_group.terraform.id}"
+  subnets            = "${aws_subnet.terraform.*.id}"
 }
 
 #Create Target Group
@@ -17,7 +15,7 @@ resource "aws_lb_target_group" "terraform" {
   name     = "${var.targetgrp_name}"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "${var.vpc_id}"
+  vpc_id   = "${aws_vpc.terraform.id}"
   deregistration_delay = 30
 
   health_check {

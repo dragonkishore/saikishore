@@ -31,9 +31,8 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
-variable "subnet_id" {}
 variable "subnet_ids" {
-  type = "list"
+  type = list
 }
 
 #Variables for ALB Target Group

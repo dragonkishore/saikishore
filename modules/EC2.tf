@@ -3,8 +3,8 @@ resource "aws_instance" "web" {
   ami                    = "${var.ami_id}"
   instance_type          = "${var.instance_type}"
   monitoring             = false  
-  security_groups        = "${var.security_groups}"
-  subnet_id              = "${var.subnet_ids[count.index]}"
+  security_groups        = "${aws_security_group.terraform.id}"
+  subnet_id              = "${aws_subnet.terraform.*.id[0]}"
  
   tags = {
     Name = "terraform"
