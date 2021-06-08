@@ -15,7 +15,7 @@ resource "aws_db_instance" "terraform" {
   maintenance_window      = "${var.rds_maintenance_window}"
   port                    = "${var.rds_port}"
   publicly_accessible     = "${var.rds_publicly_accessible}"
-  db_subnet_group_name    = "${aws_db_subnet_group.terraform.id}"
+  db_subnet_group_name    = "${aws_db_subnet_group.terraform.*.id}"
   vpc_security_group_ids  = "${aws_security_group.terraform.id}"
   apply_immediately       = "${var.rds_apply_immediately}"
 }
