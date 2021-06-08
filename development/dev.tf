@@ -12,9 +12,7 @@ module "dev" {
 
   ec2_count     = 1
   ami_id        = "ami-5a8da735"
-  instance_type = "t2.micro"
-  monitoring    = false  
-  security_groups = "${module.dev.security_groups}"
+  instance_type = "t2.micro" 
   subnet_id     = "${module.dev.subnet_id}"
 
 
@@ -24,9 +22,9 @@ module "dev" {
 
   cluster_name       = "terraform"
 
-  rds_storage             = 5
-  engine                  = "mysql"
-  rds_engine_version      = "5.7.22"
+  rds_storage                 = 5
+  engine                      = "mysql"
+  rds_engine_version          = "5.7.22"
   rds_availability_zone       = "us-east-1a"
   rds_instance_class          = "db.t3.micro"
   rds_name                    = "terraform"
@@ -39,8 +37,6 @@ module "dev" {
   rds_maintenance_window      = "Mon:00:00-Mon:01:00"
   rds_port                    = 3306
   rds_publicly_accessible     = "true"
-  db_subnet_group_name        = "${module.dev.db_subnet_group}"
-  vpc_security_group_ids      = "${module.dev.security_groups}"
   rds_apply_immediately       = "true"
 }
 

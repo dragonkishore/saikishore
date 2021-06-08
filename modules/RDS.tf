@@ -2,7 +2,6 @@
 
 resource "aws_db_instance" "terraform" {
   allocated_storage       = "${rds_storage}"
-  engine                  = "mysql"
   engine_version          = "${rds_engine_version}"
   availability_zone       = "${rds_availability_zone}"
   instance_class          = "${rds_instance_class}"
