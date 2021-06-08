@@ -9,6 +9,8 @@ variable "region" {
 
 variable "vpc_cidr" {}
 variable "vpc_id" {}
+variable "security_groups" {}
+variable "db_subnet_group" {}
 variable "subnet_cidr" {
   type = list
   default = ["170.0.1.0/24","170.0.2.0/24","170.0.3.0/24"]

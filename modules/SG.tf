@@ -4,7 +4,7 @@
 resource "aws_security_group" "terraform" {
   name        = "terraform"
   description = "inbound traffic"
-  vpc_id      = "${aws_vpc.terraform.id}"
+  vpc_id      = "${var.vpc_id}"
 
   ingress {
     description      = "demo rule"

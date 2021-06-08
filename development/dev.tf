@@ -12,7 +12,7 @@ module "dev" {
   ec2_count     = 1
   ami_id        = "ami-5a8da735"
   instance_type = "t2.micro" 
-  subnet_id     = "${module.dev.subnet_id}"
+  subnet_id     = "${module.dev.subnet_id[0]}"
 
 
   targetgrp_name     = "terraform"
