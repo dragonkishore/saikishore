@@ -74,5 +74,5 @@ output "subnet_id" {
 }
 
 output "db_subnet_group" {
-  value = "${aws_db_subnet_group.terraform.*.id}"
+  value = "${aws_db_subnet_group.terraform.id}"
 }
