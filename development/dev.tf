@@ -6,14 +6,14 @@ module "dev" {
   source      = "../modules"
   vpc_cidr    = "170.0.0.0/16"
   vpc_id      = "${module.dev.vpc_id}"
-  subnet_cidr = ["170.0.1.0/24","170.0.2.0/24","170.0.3.0/24","170.0.4.0/24","170.0.5.0/24","170.0.4.0/24"]
+  subnet_cidr = ["170.0.1.0/24","170.0.2.0/24","170.0.3.0/24","170.0.4.0/24","170.0.5.0/24","170.0.6.0/24"]
 
 
   ec2_count     = 1
-  ami_id        = "ami-5a8da735"
+  ami_id        = "ami-0aeeebd8d2ab47354"
   instance_type = "t2.micro" 
   security_groups = "${module.dev.security_groups}"
-  subnet_ids     = "${module.dev.subnet_id}"
+  subnet_ids     = "${module.dev.subnet_id[0]}"
 
 
   targetgrp_name     = "terraform"
