@@ -8,7 +8,7 @@ resource "aws_lb" "terraform" {
   security_groups    = "${aws_security_group.terraform.id}"
   subnet_mapping {
     count          = "${length(aws_subnet.terraform.*.id)}"
-    subnet_id      = "${element(aws_subnet.terraform.*.id, count.index)}" 
+    subnet_id      = "${aws_subnet.terraform.id}" 
   }
 }
 
