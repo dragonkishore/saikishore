@@ -1,7 +1,7 @@
 #Create Application Load balancer
 
 resource "aws_lb" "terraform" {
-  name               = "terraform"
+  name               = "${var.alb_name}"
   internal           = false
   load_balancer_type = "application"
   ip_address_type    = "ipv4"

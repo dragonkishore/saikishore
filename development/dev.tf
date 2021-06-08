@@ -3,11 +3,14 @@ provider "aws" {
 }
 
 module "dev" {
+  
+  # VPC AND SUBNET PART
   source      = "../modules"
   vpc_cidr    = "170.0.0.0/16"
   vpc_id      = "${module.dev.vpc_id}"
   subnet_cidr = ["170.0.1.0/24","170.0.2.0/24","170.0.3.0/24","170.0.4.0/24","170.0.5.0/24","170.0.6.0/24"]
 
+ #EC2 INSTANCE PART
 
   ec2_count     = 1
   ami_id        = "ami-0aeeebd8d2ab47354"
@@ -15,12 +18,20 @@ module "dev" {
   security_groups = "${module.dev.security_groups}"
   subnet_ids     = "${module.dev.subnet_id}"
 
-
+  #ALB AND TARGET GROUP
+  
+  alb_name           = "terraform"
   targetgrp_name     = "terraform"
 
+  #ECR 
+  
   ecr_name           = "terraform"
 
+  #ECS
+  
   cluster_name       = "terraform"
+
+  #RDS
 
   rds_storage                 = 5
   rds_engine_version          = "5.7.22"
