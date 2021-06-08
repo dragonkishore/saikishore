@@ -23,7 +23,6 @@ module "dev" {
   cluster_name       = "terraform"
 
   rds_storage                 = 5
-  engine                      = "mysql"
   rds_engine_version          = "5.7.22"
   rds_availability_zone       = "us-east-1a"
   rds_instance_class          = "db.t3.micro"
@@ -38,7 +37,6 @@ module "dev" {
   rds_port                    = 3306
   rds_publicly_accessible     = "true"
   rds_apply_immediately       = "true"
-  db_subnet_group             = "${module.dev.db_subnet_group}"
 }
 
 

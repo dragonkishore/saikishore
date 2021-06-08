@@ -2,6 +2,7 @@
 
 resource "aws_db_instance" "terraform" {
   allocated_storage       = "${var.rds_storage}"
+  engine                  = "mysql"
   engine_version          = "${var.rds_engine_version}"
   availability_zone       = "${var.rds_availability_zone}"
   instance_class          = "${var.rds_instance_class}"
@@ -15,8 +16,8 @@ resource "aws_db_instance" "terraform" {
   maintenance_window      = "${var.rds_maintenance_window}"
   port                    = "${var.rds_port}"
   publicly_accessible     = "${var.rds_publicly_accessible}"
-  db_subnet_group_name    = "${var.db_subnet_group}"
-  vpc_security_group_ids  = "${var.security_groups}"
+  db_subnet_group_name    = "${aws_db_subnet_group.terraform.*.id}"
+  vpc_security_group_ids  = ["${aws_security_group.terraform.id}"]
   apply_immediately       = "${var.rds_apply_immediately}"
 }
 
