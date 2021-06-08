@@ -13,7 +13,7 @@ module "dev" {
   ami_id        = "ami-0aeeebd8d2ab47354"
   instance_type = "t2.micro" 
   security_groups = "${module.dev.security_groups}"
-  subnet_ids     = "${module.dev.subnet_id[0]}"
+  subnet_ids     = "${module.dev.subnet_id}"
 
 
   targetgrp_name     = "terraform"
