@@ -12,6 +12,7 @@ module "dev" {
   ec2_count     = 1
   ami_id        = "ami-5a8da735"
   instance_type = "t2.micro" 
+  security_groups = "${module.dev.security_groups}"
   subnet_id     = "${module.dev.subnet_id[0]}"
 
 
@@ -37,6 +38,7 @@ module "dev" {
   rds_port                    = 3306
   rds_publicly_accessible     = "true"
   rds_apply_immediately       = "true"
+  db_subnet_group             = "${module.dev.db_subnet_group}"
 }
 
 
