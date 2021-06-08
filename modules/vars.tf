@@ -32,6 +32,9 @@ variable "instance_type" {
 }
 
 variable "subnet_id" {}
+variable "subnet_ids" {
+  type = "list"
+}
 
 #Variables for ALB Target Group
 
