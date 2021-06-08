@@ -5,7 +5,6 @@ provider "aws" {
 module "dev" {
   source      = "../modules"
   vpc_cidr    = "170.0.0.0/16"
-  tenancy     = "default"
   vpc_id      = "${module.dev.vpc_id}"
   subnet_cidr = "170.0.1.0/24"
 

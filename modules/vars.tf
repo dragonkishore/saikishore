@@ -31,8 +31,6 @@ variable "instance_type" {
 
 variable "subnet_id" {}
 
-variable "vpc_security_group_ids" {}
-
 #Variables for ALB Target Group
 
 variable "targetgrp_name" {
