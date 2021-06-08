@@ -71,9 +71,9 @@ output "vpc_id" {
 }
 
 output "subnet_id" {
-  value = "${aws_subnet.terraform.id}"
+  value = "${aws_subnet.terraform.*.id,count.index[0]}"
 }
 
 output "db_subnet_group" {
-  value = "${aws_db_subnet_group.terraform.id}"
+  value = "${aws_db_subnet_group.terraform.*.id}"
 }
