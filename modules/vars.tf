@@ -1,7 +1,9 @@
 
 #Current Region
 
-variable "region" {}
+variable "region" {
+     default ="us-east-1"
+}
 
 #Variable for VPC and SUBNET
 
@@ -20,7 +22,9 @@ data "aws_availability_zones" "azs" {}
 variable "ec2_count" {
   default = "1"
 }
-variable "ami_id" {}
+variable "ami_id" {
+  default = "ami"
+}
 variable "instance_type" {
   default = "t3.micro"
 }
@@ -30,22 +34,22 @@ variable "subnet_id" {}
 #Variables for ALB Target Group
 
 variable "targetgrp_name" {
-  default = ""
+  default = "terraform"
 }
 
 #Variables for ECR ans ECS
 
 variable "ecr_name" {
-  default = ""
+  default = "terraform"
 }
 variable "cluster_name" {
-  default = ""
+  default = "terraform"
 }
 
 #variables for RDS
 
 variable "rds_name" {
-  default = ""
+  default = "terraform"
 }
 variable "rds_engine_version" {
   default = ""

@@ -77,6 +77,6 @@ output "subnet_ids" {
   value = "${element(aws_subnet.terraform.*.id, count.index)}"
 }
 
-output "aws_db_subnet_group" {
+output "db_subnet_group" {
   value = "${aws_db_subnet_group.terraform.id}"
 }
