@@ -27,8 +27,7 @@ resource "aws_subnet" "terraform" {
 
 resource "aws_db_subnet_group" "terraform" {
   name       = "terraform"
-  count      = "${length(data.aws_availability_zones.azs.names)}"
-  subnet_ids = "${element(aws_subnet.terraform.*.id, count.index)}"
+  subnet_ids = "${aws_subnet.terraform.*.id}"
 }
 
 #Create aws_internet_gateway

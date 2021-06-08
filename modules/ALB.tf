@@ -5,7 +5,7 @@ resource "aws_lb" "terraform" {
   internal           = false
   load_balancer_type = "application"
   ip_address_type    = "ipv4"
-  security_groups    = "${aws_security_group.terraform.id}"
+  security_groups    = ["${aws_security_group.terraform.id}"]
   subnets            = "${aws_subnet.terraform.*.id}"
 }
 
