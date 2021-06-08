@@ -28,7 +28,6 @@ resource "aws_subnet" "terraform" {
 resource "aws_db_subnet_group" "terraform" {
   name       = "terraform"
   count      = "${length(data.aws_availability_zones.azs.names)}"
-  availability_zone = "${element(data.aws_availability_zones.azs.names,count.index)}"
   subnet_ids = "${element(aws_subnet.terraform.*.id, count.index)}"
 }
 
