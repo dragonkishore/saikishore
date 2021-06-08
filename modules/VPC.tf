@@ -27,7 +27,7 @@ resource "aws_subnet" "terraform" {
 
 resource "aws_db_subnet_group" "terraform" {
   name       = "terraform"
-  subnet_ids = [aws_subnet.terraform.*.id]
+  subnet_ids = "${aws_subnet.terraform.*.id}"
 }
 
 #Create aws_internet_gateway
