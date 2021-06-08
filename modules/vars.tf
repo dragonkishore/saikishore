@@ -29,30 +29,64 @@ variable "subnet_id" {}
 
 #Variables for ALB Target Group
 
-variable "targetgrp_name" {}
+variable "targetgrp_name" {
+  default = ""
+}
 
 #Variables for ECR ans ECS
 
-variable "ecr_name" {}
-variable "cluster_name" {}
+variable "ecr_name" {
+  default = ""
+}
+variable "cluster_name" {
+  default = ""
+}
 
 #variables for RDS
 
-variable "rds_name" {}
-variable "rds_engine_version" {}
-variable "rds_availability_zone" {}
-variable "rds_instance_class" {}
-variable "rds_username" {}
-variable "rds_password" {}
-variable "rds_parameter_group_name" {}
-variable "rds_backup_window" {}
-variable "rds_backup_retention_period" {}
-variable "rds_deletion_protection" {}
-variable "rds_maintenance_window" {}
-variable "rds_port" {}
-variable "rds_publicly_accessible" {}
-variable "rds_db_subnet_group_name" {}
-variable "rds_vpc_security_group_ids" {}
-variable "rds_apply_immediately" {}
-variable "rds_storage" {}
+variable "rds_name" {
+  default = ""
+}
+variable "rds_engine_version" {
+  default = ""
+}
+variable "rds_availability_zone" {
+  default = ""
+}
+variable "rds_instance_class" {
+  default = ""
+}
+variable "rds_username" {
+  default = ""
+}
+variable "rds_password" {
+  default = ""
+}
+variable "rds_parameter_group_name" {
+  default = ""
+}
+variable "rds_backup_window" {
+  default = ""
+}
+variable "rds_backup_retention_period" {
+  default = ""
+}
+variable "rds_deletion_protection" {
+  default = ""
+}
+variable "rds_maintenance_window" {
+  default = ""
+}
+variable "rds_port" {
+  default = ""
+}
+variable "rds_publicly_accessible" {
+  default = ""
+}
+variable "rds_apply_immediately" {
+  default = ""
+}
+variable "rds_storage" {
+  default = ""
+}
 
