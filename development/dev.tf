@@ -64,4 +64,5 @@ module "ecs" {
  module "asg" {
     source                      = "../modules/AUTO"
     asgname                     = "terraform"
+    security_groups             = "${module.sg.security_groups}"
 }
