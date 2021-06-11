@@ -12,6 +12,7 @@ module "vpc" {
 module "sg" {
   source      = "../modules/SG"
   sg_name     = "terraform"
+  vpc_id      = "${module.vpc.vpc_id}"
 }
  
 # module "ec2" {
