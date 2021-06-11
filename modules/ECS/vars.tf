@@ -3,4 +3,3 @@
 
 variable "cluster_name" {}
 
-variable "ecs_name" {}
