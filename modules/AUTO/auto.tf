@@ -1,31 +1,33 @@
 resource "aws_launch_configuration" "terraform" {
-  name_prefix   = "terraform"
-  image_id      = 
-  instance_type = "t2.micro"
+  name_prefix       = "${var.asgname}"
+  image_id          = data.aws_ami.amazon_linux_ecs.id
+  instance_type     = "t2.micro"
   iam_instance_profile = "ecsinstancerole"
-  key_name  = "sai"
-  security_groups  = ["${aws_security_group.terraform.id}"]
+  key_name          = "sai"
+  user_data         = "#!/bin/bash\necho ECS_CLUSTER= ""${aws_ecs_cluster.terraform.id}"" >> /etc/ecs/ecs.config;\necho ECS_BACKEND_HOST= >> /etc/ecs/ecs.config;"
+  security_groups   = ["${aws_security_group.terraform.id}"]
   associate_public_ip_address  = "true"
   enable_monitoring = "enable"
-  ebs_optimized = "true"
+  ebs_optimized     = "true"
   root_block_device = {
         volume_type ="standard"
         volume_size = "30"
 
   }
- 
- lifecycle {
-    create_before_destroy = true
-  }
-}
+ }
 
 resource "aws_autoscaling_group" "terraform" {
   name                 = "terraform"
-  launch_configuration = aws_launch_configuration.as_conf.name
+  vpc_zone_identifier  = ["${aws_subnet.terraform.*.]id[0]}","${aws_subnet.terraform.*.]id[1]}"]
+  launch_configuration = aws_launch_configuration.terraform.name
+  desired_capacity     = 1
   min_size             = 1
-  max_size             = 2
+  max_size             = 1
+  health_check_type    = "EC2"
 
-  lifecycle {
-    create_before_destroy = true
+  tag {
+    key                 = "Name"
+    value               = "${aws_ecs_cluster.terraform.id}"
+    propagate_at_launch = true
   }
 }
