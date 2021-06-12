@@ -7,12 +7,12 @@ resource "aws_launch_configuration" "terraform" {
   user_data         = "#!/bin/bash\necho ECS_CLUSTER= terraform >> /etc/ecs/ecs.config;\necho ECS_BACKEND_HOST= >> /etc/ecs/ecs.config;"
   security_groups   = ["${aws_security_group.terraform.id}"]
   associate_public_ip_address  = "true"
-  enable_monitoring = "enable"
+  enable_monitoring = "true"
   ebs_optimized     = "true"
-  root_block_device = {
-        volume_type ="standard"
-        volume_size = "30"
-
+  root_block_device {
+      volume_type = "standard"
+      volume_size = 30
+      delete_on_termination = true
   }
  }
 
