@@ -73,6 +73,14 @@ output "subnet_id" {
   value = "${aws_subnet.terraform.*.id}"
 }
 
+output "subnet_id2" {
+  value = "${aws_subnet.terraform[0].id}"
+}  
+
+output "subnet_id3" {
+  value = "${aws_subnet.terraform[1].id}"
+}
+
 output "db_subnet_group" {
   value = "${aws_db_subnet_group.terraform.id}"
 }

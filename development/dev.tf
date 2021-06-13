@@ -10,9 +10,9 @@ module "vpc" {
 }
 
 module "sg" {
-  source      = "../modules/SG"
-  sg_name     = "terraform"
-  vpc_id      = "${module.vpc.vpc_id}"
+  source         = "../modules/SG"
+  sg_name        = "terraform"
+  sg_vpc_id      = "${module.vpc.vpc_id}"
 }
  
 # module "ec2" {
@@ -65,5 +65,7 @@ module "ecs" {
  module "asg" {
     source                      = "../modules/AUTO"
     asgname                     = "terraform"
-    security_groups             = "${module.sg.security_groups}"
-}
+    asg_security_groups         = "${module.sg.security_groups}"
+    asg_vpc_zone_identifier     = ["${module.vpc.subnet_id2}","${module.vpc.subnet_id3}"]
+    tagname                     = "terraform"
+ }

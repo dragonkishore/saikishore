@@ -8,3 +8,6 @@ resource "aws_ecs_cluster" "terraform" {
     value = "disabled"
   }
 }
+output "clustername" {
+  value = "${aws_ecs_cluster.terraform.id}"
+}
