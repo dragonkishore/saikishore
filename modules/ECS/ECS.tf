@@ -1,7 +1,7 @@
 #Create ECS Cluster
 
 resource "aws_ecs_cluster" "terraform" {
-  name = "${var.cluster_name}"
+  name = "${var.ecs_cluster_name}"
 
   setting {
     name  = "containerInsights"
@@ -9,5 +9,5 @@ resource "aws_ecs_cluster" "terraform" {
   }
 }
 output "clustername" {
-  value = "${aws_ecs_cluster.terraform.id}"
+  value = "${aws_ecs_cluster.terraform.name}"
 }

@@ -15,5 +15,10 @@
 # }
 variable "asgname" {}
 variable "asg_security_groups" {}
+variable "ecs_instance_type" {}
 variable "tagname" {}
 variable "asg_vpc_zone_identifier" {}
+variable "ecs_key_pair" {}
+variable "ecs_volume_type" {}
+variable "ecs_volume_size" {}
+

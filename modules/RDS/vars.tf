@@ -16,4 +16,9 @@ variable "rds_port" {}
 variable "rds_publicly_accessible" {}
 variable "rds_apply_immediately" {}
 variable "rds_storage" {}
+variable "rds_storage_type" {}
+variable "rds_db_subnet_group_name" {}
+variable "rds_vpc_security_group_ids" {
+    type = list
+}
 

@@ -1,23 +1,23 @@
 resource "aws_launch_configuration" "terraform" {
   name_prefix       = "${var.asgname}"
   image_id          = "ami-0dbd8c88f9060cf71"
-  instance_type     = "t2.micro"
-  #iam_instance_profile = "arn:aws:iam::390161664430:role/ecsInstanceRole"
-  key_name          = "sai"
+  instance_type     = "${var.ecs_instance_type}"
+  iam_instance_profile = "arn:aws:iam::390161664430:instance-profile/ecsInstanceRole"
+  key_name          = "${var.ecs_key_pair}"
   user_data         = "#!/bin/bash\necho ECS_CLUSTER= terraform >> /etc/ecs/ecs.config;\necho ECS_BACKEND_HOST= >> /etc/ecs/ecs.config;"
   security_groups   = ["${var.asg_security_groups}"]
   associate_public_ip_address  = "true"
   enable_monitoring = "true"
   ebs_optimized     = "true"
   root_block_device  {
-        volume_type ="standard"
-        volume_size = "30"
+        volume_type = "${var.ecs_volume_type}"
+        volume_size = "${var.ecs_volume_size}"
    }
  }
 
 resource "aws_autoscaling_group" "terraform" {
   name                 = "terraform"
-  vpc_zone_identifier  = ["${var.asg_vpc_zone_identifier[0]}","${var.asg_vpc_zone_identifier[1]}"]
+  vpc_zone_identifier  = "${var.asg_vpc_zone_identifier}"
   launch_configuration = aws_launch_configuration.terraform.name
   desired_capacity     = 1
   min_size             = 1
