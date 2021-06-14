@@ -51,7 +51,7 @@ module "target_grp1" {
 
 module "target_grp2" {  
         source             = "../modules/TAR_GRP"   
-        targetgrp_name     = "terraform"
+        targetgrp_name     = "terraform2"
         trg_vpc_id         = "${module.vpc.vpc_id}"
 }
    
