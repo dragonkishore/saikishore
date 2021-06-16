@@ -12,3 +12,5 @@ variable "ecs_target_group" {}
 variable "ecs_service_name" {}
 
 variable "ecs_containerport" {}
+
+variable "td_container_port" {}

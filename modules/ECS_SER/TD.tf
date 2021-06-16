@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "terraform" {
       essential = true
       portMappings = [
         {
-          containerPort = 80
+          containerPort = "${var.td_container_port}"
           hostPort      = 0
         }
       ]
