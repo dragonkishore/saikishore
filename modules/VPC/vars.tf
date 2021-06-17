@@ -9,7 +9,10 @@ variable "region" {
 
 variable "vpc_cidr" {}
 variable "vpc_id" {}
-variable "subnet_cidr" {
+variable "subnet_cidr_pub" {
+  type = list
+}
+variable "subnet_cidr_pri" {
   type = list
 }
 

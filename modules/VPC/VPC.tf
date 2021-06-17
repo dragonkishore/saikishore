@@ -16,10 +16,21 @@ resource "aws_subnet" "terraform" {
   count      = "${length(data.aws_availability_zones.azs.names)}"
   availability_zone = "${element(data.aws_availability_zones.azs.names,count.index)}"
   vpc_id     = "${var.vpc_id}"
-  cidr_block = "${element(var.subnet_cidr,count.index)}"
+  cidr_block = "${element(var.subnet_cidr_pub,count.index)}"
 
   tags = {
-    Name = "terraform-sub-${count.index+1}"
+    Name = "terraform-pub-${count.index+1}"
+  }
+}
+
+resource "aws_subnet" "terraform2" {
+  count      = "${length(data.aws_availability_zones.azs.names)}"
+  availability_zone = "${element(data.aws_availability_zones.azs.names,count.index)}"
+  vpc_id     = "${var.vpc_id}"
+  cidr_block = "${element(var.subnet_cidr_pri,count.index)}"
+
+  tags = {
+    Name = "terraform-pri-${count.index+1}"
   }
 }
 
@@ -79,6 +90,10 @@ output "subnet_id2" {
 
 output "subnet_id3" {
   value = "${aws_subnet.terraform[1].id}"
+}
+
+output "subnet_id_pri" {
+  value = "${aws_subnet.terraform2.*.id}"
 }
 
 output "db_subnet_group" {
